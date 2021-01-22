@@ -16,7 +16,7 @@ export function withLatestFromDemo1() {
     })
   );
 
-  run(stream$);
+  // run(stream$);
 }
 
 // Add new item to an array
