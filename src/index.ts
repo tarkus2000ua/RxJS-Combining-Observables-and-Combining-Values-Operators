@@ -23,10 +23,10 @@ import {
   withLatestFromDemo2,
   withLatestFromDemo3,
   combineLatestDemo1,
-  combineLatestDemo2,
   zipDemo3,
   forkJoinDemo4,
   forkJoinDemo5,
+  zipDemo4,
 } from "./02-combining-values";
 
 // ***************************************************
@@ -47,10 +47,10 @@ endWithDemo();
 // *                            07 - Combining Values
 // ***************************************************
 combineLatestDemo1();
-combineLatestDemo2();
 zipDemo1();
 zipDemo2();
 zipDemo3();
+zipDemo4();
 forkJoinDemo1();
 forkJoinDemo2();
 forkJoinDemo3();

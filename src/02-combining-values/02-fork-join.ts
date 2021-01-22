@@ -1,7 +1,10 @@
+// forkJoin(
+//  observables: Observable[]
+// ): Observable
 import { timer, forkJoin, throwError, of } from 'rxjs';
-import { take, delay, catchError, map, tap, pluck } from 'rxjs/operators';
+import { take, delay, catchError, map } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import { addItem, run } from './../04-utils';
+import { run } from './../04-utils';
 
 export function forkJoinDemo1() {
   const timerOne = timer(1000, 4000).pipe(take(3));
@@ -9,42 +12,35 @@ export function forkJoinDemo1() {
   const timerThree = timer(3000, 4000).pipe(take(3));
 
   // like Promise.all()
-  const stream$ = forkJoin(
-    timerOne,
-    timerTwo,
-    timerThree,
-    (one, two, three) => {
-      return [one, two, three];
-    }
-  );
+  const stream$ = forkJoin([timerOne, timerTwo, timerThree]);
 
   // run(stream$);
 }
 
 // Handling errors on outside
 export function forkJoinDemo2() {
-  const stream$ = forkJoin(
+  const stream$ = forkJoin([
     // emit 'Hello' immediately
     of('Hello'),
     //emit 'World' after 1 second
     of('World').pipe(delay(1000)),
     // throw error
     throwError('This is an error')
-  ).pipe(catchError(error => of(error)));
+  ]).pipe(catchError(error => of(error)));
 
   // run(stream$);
 }
 
 // Getting successful results when one inner observable errors
 export function forkJoinDemo3() {
-  const stream$ = forkJoin(
+  const stream$ = forkJoin([
     // emit 'Hello' immediately
     of('Hello'),
     //emit 'World' after 1 second
     of('World').pipe(delay(1000)),
     // throw error, handle it and return null
-    throwError('This is an error').pipe(catchError(error => of(null)))
-  );
+    throwError('This is an error').pipe(catchError(error => of('')))
+  ]);
 
   // run(stream$);
 }
@@ -56,7 +52,7 @@ export function forkJoinDemo4() {
   const timerThree = timer(3000, 3000).pipe(take(3));
 
   // like Promise.all()
-  const stream$ = forkJoin(timerOne, timerTwo, timerThree);
+  const stream$ = forkJoin([timerOne, timerTwo, timerThree]);
 
   // incorrect
   // stream$.subscribe({
@@ -95,18 +91,3 @@ export function forkJoinDemo5() {
 
   // run(stream$);
 }
-
-/**
- * Angular example:
- * run requests in parellel, wait for the responses from all requests
- *
- * const posts$ = this.http.get(`https://jsonplaceholder.typicode.com/posts?userId=1`);
- * const albums$ = this.http.get(`https://jsonplaceholder.typicode.com/albums?userId=1`);
- *
- *
- * const stream$ = forkJoin(posts$, albums$)
- *  .subscribe([posts, albums] => {
- *      this.posts = posts;
- *      this.albums = albums;
- *   })
- */

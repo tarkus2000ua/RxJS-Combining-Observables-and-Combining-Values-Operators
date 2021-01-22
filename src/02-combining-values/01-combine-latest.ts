@@ -1,4 +1,7 @@
-import { timer, Observable, combineLatest } from 'rxjs';
+// combineLatest(
+//  observables: Observable[]
+// ): Observable
+import { timer, combineLatest } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { run } from './../04-utils';
 
@@ -15,23 +18,9 @@ export function combineLatestDemo1() {
   // when one timer emits, emit the latest values from each timer as an array
   // BUT only after each stream emit a value
   // use default projection function () => [a, b, c]
-  const stream$ = combineLatest(timerOne, timerTwo, timerThree);
+  const stream$ = combineLatest([timerOne, timerTwo, timerThree]);
 
   // run(stream$);
 }
 
-export function combineLatestDemo2() {
-  const timerOne = timer(1000, 4000).pipe(take(3));
-  const timerTwo = timer(2000, 4000).pipe(take(3));
-  const timerThree = timer(3000, 4000).pipe(take(3));
 
-  // use projection function () => a * b * c
-  const stream$ = combineLatest(
-    timerOne,
-    timerTwo,
-    timerThree,
-    (a, b, c) => a * b * c
-  );
-
-  // run(stream$);
-}

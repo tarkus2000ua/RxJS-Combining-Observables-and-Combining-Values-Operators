@@ -1,10 +1,13 @@
+// withLatestFrom(
+//  otherObservables: ...Observable[]
+// ): Observable
 import { timer, Observable, of } from 'rxjs';
 import { take, map, withLatestFrom } from 'rxjs/operators';
 import { run } from './../04-utils';
 
 export function withLatestFromDemo1() {
   const source1$ = timer(0, 1000).pipe(take(3));
-  const source2$ = timer(0, 100).pipe(take(3));
+  const source2$ = timer(0, 1000); //timer(0, 10000), timer(10000, 1000), of(1, 2, 3);
 
   const stream$ = source1$.pipe(
     withLatestFrom(source2$),
@@ -13,7 +16,7 @@ export function withLatestFromDemo1() {
     })
   );
 
-  // run(stream$);
+  run(stream$);
 }
 
 // Add new item to an array

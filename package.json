@@ -7,7 +7,7 @@
     "start": "concurrently --kill-others \"npm run project\" \"npm run server\""
   },
   "dependencies": {
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.6.3"
   },
   "devDependencies": {
     "@webpack-cli/init": "0.0.8",
