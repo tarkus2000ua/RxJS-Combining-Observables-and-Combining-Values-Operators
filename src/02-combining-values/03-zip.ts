@@ -13,9 +13,11 @@ export function zipDemo1() {
   const timerThree = timer(3000, 4000).pipe(take(3));
 
   // requires all three elements
-  const stream$ = zip(timerOne, timerTwo, timerThree);
+  const stream$ = zip(timerOne, timerTwo, timerThree)
+  // map them to objects
+  .pipe(map(([timerOne, timerTwo, timerThree]) => ({timerOne, timerTwo, timerThree})));
 
-  // run(stream$);
+  run(stream$);
 }
 
 // Error

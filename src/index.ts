@@ -11,7 +11,7 @@ import {
   raceDemo,
   startWithDemo,
   endWithDemo,
-} from "./01-combining-streams";
+} from "./01-combining-observables";
 
 import {
   forkJoinDemo1,
