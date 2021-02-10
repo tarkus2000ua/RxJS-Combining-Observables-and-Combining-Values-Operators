@@ -28,6 +28,7 @@ import {
   forkJoinDemo5,
   zipDemo4,
 } from "./02-combining-values";
+import { runner } from "./03-practice/tasks";
 
 // ***************************************************
 // *                            Combination Strategies
@@ -59,3 +60,5 @@ forkJoinDemo5();
 withLatestFromDemo1();
 withLatestFromDemo2();
 withLatestFromDemo3();
+
+runner();

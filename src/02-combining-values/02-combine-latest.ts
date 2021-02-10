@@ -3,7 +3,7 @@
 // ): Observable
 import { timer, combineLatest } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { run } from './../04-utils';
+import { run } from '../04-utils';
 
 export function combineLatestDemo1() {
   // timerOne emits first value at 1s, then once every 4s

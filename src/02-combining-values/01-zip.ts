@@ -4,7 +4,7 @@
 
 import { timer, fromEvent, zip, range, interval, throwError, NEVER } from 'rxjs';
 import { take, map } from 'rxjs/operators';
-import { run } from './../04-utils';
+import { run } from '../04-utils';
 
 
 export function zipDemo1() {
@@ -17,7 +17,7 @@ export function zipDemo1() {
   // map them to objects
   .pipe(map(([timerOne, timerTwo, timerThree]) => ({timerOne, timerTwo, timerThree})));
 
-  run(stream$);
+  // run(stream$);
 }
 
 // Error

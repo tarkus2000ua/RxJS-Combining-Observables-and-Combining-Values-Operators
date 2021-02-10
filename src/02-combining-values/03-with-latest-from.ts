@@ -3,7 +3,7 @@
 // ): Observable
 import { timer, Observable, of } from 'rxjs';
 import { take, map, withLatestFrom } from 'rxjs/operators';
-import { run } from './../04-utils';
+import { run } from '../04-utils';
 
 export function withLatestFromDemo1() {
   const source1$ = timer(0, 1000).pipe(take(3));

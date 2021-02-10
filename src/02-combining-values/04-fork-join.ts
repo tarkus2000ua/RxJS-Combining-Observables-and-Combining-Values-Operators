@@ -4,7 +4,7 @@
 import { timer, forkJoin, throwError, of } from 'rxjs';
 import { take, delay, catchError, map } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import { run } from './../04-utils';
+import { run } from '../04-utils';
 
 export function forkJoinDemo1() {
   const timerOne = timer(1000, 4000).pipe(take(3));
