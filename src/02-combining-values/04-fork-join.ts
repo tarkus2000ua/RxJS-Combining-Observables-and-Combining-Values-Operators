@@ -1,10 +1,9 @@
 // forkJoin(
 //  observables: Observable[]
 // ): Observable
-import { timer, forkJoin, throwError, of } from 'rxjs';
-import { take, delay, catchError, map } from 'rxjs/operators';
+import { timer, forkJoin, throwError, of, take, delay, catchError, map } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { run } from '../04-utils';
+import { addItem, run } from '../04-utils';
 
 export function forkJoinDemo1() {
   const timerOne = timer(1000, 4000).pipe(take(3));
@@ -25,7 +24,7 @@ export function forkJoinDemo2() {
     //emit 'World' after 1 second
     of('World').pipe(delay(1000)),
     // throw error
-    throwError('This is an error')
+    throwError(() => 'This is an error')
   ]).pipe(catchError(error => of(error)));
 
   // run(stream$);
@@ -39,7 +38,7 @@ export function forkJoinDemo3() {
     //emit 'World' after 1 second
     of('World').pipe(delay(1000)),
     // throw error, handle it and return null
-    throwError('This is an error').pipe(catchError(error => of('')))
+    throwError(() => 'This is an error').pipe(catchError(error => of('')))
   ]);
 
   // run(stream$);
@@ -81,7 +80,7 @@ export function forkJoinDemo4() {
 export function forkJoinDemo5() {
   const userIds = [1, 2, 3];
   const multipleRequests = userIds.map(id =>
-    ajax(`https://jsonplaceholder.typicode.com/users/${id}`)
+    ajax<any>(`https://jsonplaceholder.typicode.com/users/${id}`)
   );
 
   const stream$ = forkJoin(multipleRequests).pipe(

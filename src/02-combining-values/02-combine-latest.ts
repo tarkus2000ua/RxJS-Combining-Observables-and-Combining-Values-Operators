@@ -1,8 +1,7 @@
 // combineLatest(
 //  observables: Observable[]
 // ): Observable
-import { timer, combineLatest } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { timer, combineLatest, take } from 'rxjs';
 import { run } from '../04-utils';
 
 export function combineLatestDemo1() {

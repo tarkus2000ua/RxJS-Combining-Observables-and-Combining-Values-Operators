@@ -27,6 +27,10 @@ import {
   forkJoinDemo4,
   forkJoinDemo5,
   zipDemo4,
+  zipWithDemo1,
+  zipWithDemo2,
+  zipWithDemo3,
+  zipWithDemo4,
 } from "./02-combining-values";
 import { runner } from "./03-practice/tasks";
 
@@ -52,6 +56,10 @@ zipDemo1();
 zipDemo2();
 zipDemo3();
 zipDemo4();
+zipWithDemo1();
+zipWithDemo2();
+zipWithDemo3();
+zipWithDemo4();
 forkJoinDemo1();
 forkJoinDemo2();
 forkJoinDemo3();

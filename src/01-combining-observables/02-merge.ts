@@ -2,8 +2,7 @@
 //  ...observables: any[],
 //  concurrent?: number
 // ): Observable<R>
-import { interval, merge, Observable, throwError, of } from 'rxjs';
-import { take, map, mapTo, mergeMap } from 'rxjs/operators';
+import { interval, merge, Observable, throwError, of, take, map, mapTo, mergeMap } from 'rxjs';
 import { run } from './../04-utils';
 
 export function mergeDemo1() {
@@ -46,7 +45,7 @@ export function mergeDemo3() {
   const timer1 = interval(1000).pipe(
     mergeMap(val => {
       if (val > 3) {
-        return throwError('Error >3!'); // <-- create throw error observable
+        return throwError(() => 'Error >3!'); // <-- create throw error observable
       }
       return of(val);
     })

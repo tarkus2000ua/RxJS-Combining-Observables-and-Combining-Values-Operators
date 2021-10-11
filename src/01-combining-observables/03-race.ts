@@ -2,8 +2,7 @@
 //  ...observables: any[]
 // ): Observable<T>
 
-import { timer, race } from 'rxjs';
-import { take, mapTo } from 'rxjs/operators';
+import { timer, race, take, mapTo } from 'rxjs';
 import { run } from './../04-utils';
 
 export function raceDemo() {

@@ -2,8 +2,7 @@
 //  ...array: (SchedulerLike | T)[]
 // ): OperatorFunction<T, T | D>
 
-import { timer } from 'rxjs';
-import { take, startWith } from 'rxjs/operators';
+import { timer, take, startWith } from 'rxjs';
 import { run } from './../04-utils';
 
 export function startWithDemo() {

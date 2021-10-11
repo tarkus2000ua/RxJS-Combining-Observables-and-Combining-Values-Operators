@@ -1,8 +1,7 @@
 // withLatestFrom(
 //  otherObservables: ...Observable[]
 // ): Observable
-import { timer, Observable, of } from 'rxjs';
-import { take, map, withLatestFrom } from 'rxjs/operators';
+import { timer, Observable, of, take, map, withLatestFrom } from 'rxjs';
 import { run } from '../04-utils';
 
 export function withLatestFromDemo1() {

@@ -2,8 +2,7 @@
 //  ...array: (SchedulerLike | T)[]
 // ): MonoTypeOperatorFunction<T>
 
-import { timer } from 'rxjs';
-import { take, endWith } from 'rxjs/operators';
+import { timer, take, endWith } from 'rxjs';
 import { run } from './../04-utils';
 
 export function endWithDemo() {

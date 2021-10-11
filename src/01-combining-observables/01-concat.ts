@@ -2,8 +2,7 @@
 //  ...observables: (SchedulerLike | O)[]
 // ): Observable<ObservedValueOf<O> | R>
 
-import { timer, concat, throwError, EMPTY } from 'rxjs';
-import { take, mapTo, catchError } from 'rxjs/operators';
+import { timer, concat, throwError, EMPTY, take, mapTo, catchError } from 'rxjs';
 import { run } from './../04-utils';
 
 export function concatDemo1() {
@@ -36,7 +35,7 @@ export function concatDemo2() {
 // handle error outside
 export function concatDemo3() {
   const stream1$ = timer(0, 1000).pipe(take(3)); // finite stream
-  const stream2$ = throwError('This is an error'); // stream w/ error
+  const stream2$ = throwError(() => 'This is an error'); // stream w/ error
 
   const stream$ = concat(stream1$, stream2$);
 
@@ -47,7 +46,7 @@ export function concatDemo3() {
 export function concatDemo4() {
   const stream1$ = timer(0, 1000).pipe(take(3)); // finite stream
   // stream w/ error, which is handled
-  const stream2$ = throwError('This is an error').pipe(
+  const stream2$ = throwError(() => 'This is an error').pipe(
     catchError(error => EMPTY)
   );
 
