@@ -2,8 +2,7 @@
 //  observables: ...Observable[]
 // ): Observable
 
-import { timer, fromEvent, zip, range, interval, throwError, NEVER } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { timer, fromEvent, zip, range, interval, throwError, NEVER, take, map } from 'rxjs';
 import { run } from '../04-utils';
 
 
@@ -24,7 +23,7 @@ export function zipDemo1() {
 export function zipDemo2() {
   const timerOne = timer(1000, 4000).pipe(take(3));
   const timerTwo = timer(2000, 4000).pipe(take(3));
-  const timerThree = throwError('Error in the input Observable');
+  const timerThree = throwError(() => 'Error in the input Observable');
 
   // never ends and never outputs the value
   // const timerThree = NEVER;
