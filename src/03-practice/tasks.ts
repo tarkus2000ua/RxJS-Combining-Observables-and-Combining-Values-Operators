@@ -128,6 +128,3 @@ import { ajax } from 'rxjs/ajax';
 
 
 export function runner() {}
-
-// примеры в картинках
-// https://www.digitalocean.com/community/tutorials/rxjs-operators-for-dummies-forkjoin-zip-combinelatest-withlatestfrom
